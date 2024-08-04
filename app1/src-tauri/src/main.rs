@@ -10,6 +10,7 @@ use tauri::command;
 const SETTINGS_FILE: &str = "settings.json";
 
 fn get_settings_path() -> PathBuf {
+    println!("{:?}", tauri::api::path::app_config_dir(&tauri::Config::default()));
     tauri::api::path::app_config_dir(&tauri::Config::default())
         .expect("Failed to get config directory")
         .join(SETTINGS_FILE)
@@ -77,10 +78,9 @@ fn greet(name: &str) -> String {
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet])
-        .invoke_handler(tauri::generate_handler![get_new_jira_setting])
-        .invoke_handler(tauri::generate_handler![get_jira_settings])
-        .invoke_handler(tauri::generate_handler![update_jira_settings])
+        .invoke_handler(tauri::generate_handler![
+            greet,get_new_jira_setting,get_jira_settings,update_jira_settings])
+        // .invoke_handler(tauri::generate_handler![update_jira_settings])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
