@@ -11,8 +11,6 @@ import { SideNavigatorComponent } from "./side-navigator/side-navigator.componen
   standalone: true,
   imports: [
     CommonModule, 
-    RouterLink,
-    RouterLinkActive,
     RouterOutlet, 
     MatSidenavModule, 
     MatToolbarModule, 

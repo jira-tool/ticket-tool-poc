@@ -11,7 +11,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   imports: [MatSidenavModule, MatSelectModule, MatListModule, MatToolbar, 
     RouterLink,
     RouterLinkActive,
-    RouterOutlet, ],
+  ],
   templateUrl: './side-navigator.component.html',
   styleUrl: './side-navigator.component.css'
 })
