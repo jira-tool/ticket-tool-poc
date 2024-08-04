@@ -1,24 +1,17 @@
 import { Component } from '@angular/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { invoke } from "@tauri-apps/api/tauri";
+import { SideNavigatorComponent } from "./side-navigator/side-navigator.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, MatSidenavModule, MatToolbarModule, SideNavigatorComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  greetingMessage = "";
 
-  greet(event: SubmitEvent, name: string): void {
-    event.preventDefault();
-
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    invoke<string>("greet", { name }).then((text) => {
-      this.greetingMessage = text;
-    });
-  }
 }

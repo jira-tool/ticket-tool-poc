@@ -1,18 +1,17 @@
-<div class="container">
-  <h1>Welcome to Tauri + Angular!</h1>
-  <div class="row">
-    <a href="https://tauri.app" target="_blank">
-      <img src="/assets/tauri.svg" class="logo tauri" alt="Tauri logo" />
-    </a>
-    <a href="https://angular.io" target="_blank">
-      <img src="/assets/angular.svg" class="logo angular" alt="Angular logo" />
-    </a>
-  </div>
-  <p>Click on the logos to learn more about the frameworks</p>
+<mat-sidenav-container class="container">
 
-  <form class="row" (submit)="greet($event, greetInput.value)">
-    <input #greetInput id="greet-input" placeholder="Enter a name..." />
-    <button type="submit">Greet</button>
-  </form>
-  <p>{{ greetingMessage }}</p>
-</div>
+  <mat-sidenav #sidenav mode="side" opened>
+    <app-side-navigator class="sidenav">
+    
+    </app-side-navigator>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span>My Application</span>
+    </mat-toolbar>
+    <div class="content">
+      <p>Main content goes here</p>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
