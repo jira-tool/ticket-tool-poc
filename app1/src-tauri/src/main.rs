@@ -26,9 +26,9 @@ fn read_settings() -> Vec<JiraSetting> {
     }
 }
 
-fn write_settings(settings: &JiraSetting) {
+fn write_settings(settings: Vec<JiraSetting>) {
     let path = get_settings_path();
-    let data = serde_json::to_string(settings).expect("Unable to serialize settings");
+    let data = serde_json::to_string(&settings).expect("Unable to serialize settings");
     fs::write(path, data).expect("Unable to write settings file");
 }
 
@@ -64,6 +64,10 @@ fn get_jira_settings() -> Vec<JiraSetting> {
     read_settings()
 }
 
+#[command]
+fn update_jira_settings(settings: Vec<JiraSetting>) {
+    write_settings(settings);
+}
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
@@ -76,6 +80,7 @@ fn main() {
         .invoke_handler(tauri::generate_handler![greet])
         .invoke_handler(tauri::generate_handler![get_new_jira_setting])
         .invoke_handler(tauri::generate_handler![get_jira_settings])
+        .invoke_handler(tauri::generate_handler![update_jira_settings])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
