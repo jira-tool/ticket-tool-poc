@@ -38,6 +38,7 @@ export class ConfigProjectComponent implements OnInit {
       const temp = JSON.stringify(text);
       const temp2 = JSON.parse(temp);
       this.jiraSettings = temp2;
+      console.log(this.jiraSettings);
     });    
   }
 
@@ -62,6 +63,9 @@ export class ConfigProjectComponent implements OnInit {
     this.selectedRow.base_url = jiraSetting.base_url;
     this.selectedRow.user_name = jiraSetting.user_name;
     this.selectedRow.api_token = jiraSetting.api_token;
+    invoke<string>("update_jira_setting", {settings: this.jiraSettings}).then((text) => {
+      this.jiraSettings = JSON.parse(text);
+    });
 
   }
 
