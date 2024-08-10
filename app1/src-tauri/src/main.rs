@@ -56,7 +56,7 @@ impl Default for JiraSetting {
 }
 
 #[command]
-fn get_new_jira_setting() -> JiraSetting {
+fn create_connect_setting() -> JiraSetting {
     JiraSetting::default()
 }
 
@@ -79,7 +79,9 @@ fn greet(name: &str) -> String {
 fn main() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
-            greet,get_new_jira_setting,get_jira_settings,update_jira_settings])
+            greet,
+            create_connect_setting,get_jira_settings,
+            update_jira_settings])
         // .invoke_handler(tauri::generate_handler![update_jira_settings])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

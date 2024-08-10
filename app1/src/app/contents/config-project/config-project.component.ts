@@ -67,14 +67,14 @@ export class ConfigProjectComponent implements OnInit {
     invoke<string>("update_jira_settings", {settings: this.jiraSettings}).then((text) => {
       this.jiraSettings = JSON.parse(text);
     });
-
   }
 
   public createNewJiraSetting(event: { preventDefault: () => void; }): void {
     event.preventDefault();
 
     // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    invoke<string>("get_new_jira_setting").then((text) => {
+    invoke<string>("create_connect_setting").then((text) => {
+      console.log(text);
       this.jiraSettings = JSON.parse(text);
     });
   }

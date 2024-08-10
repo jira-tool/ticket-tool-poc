@@ -17,4 +17,8 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 })
 export class SideNavigatorComponent {
 
+  redirectToGoogle() {
+    window.location.href = 'https://atlassian.net';
+  }
+
 }
